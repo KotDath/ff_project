@@ -3,7 +3,7 @@
 #include <string.h>
 #include <dirent.h>
 
-char *pathcat(const char *str1, char *str2);
+char *pathcat(char *str1, char *str2);
 
 int main(int argc, char *argv[])
 {
