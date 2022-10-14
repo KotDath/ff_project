@@ -14,7 +14,7 @@ void LinuxRecSearch(char *path, int indent) {
             char path[MAX_PATH];
             if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
                 continue;
-            printf(path, sizeof(path), "%s/%s", path, entry->d_name);
+            snprintf(path, sizeof(path), "%s/%s", name, entry->d_name);
             printf("%*s[%s]\n", indent, "", entry->d_name);
             LinuxRecSearch(path, indent + 2);
         } else {
