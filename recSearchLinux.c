@@ -1,17 +1,25 @@
-#include recSearch.h
+#include "recSearch.h"
 #include <dirent.h>
 #define MAX_PATH 4096
 
 void LinuxRecSearch(char *path, char *pattern, int offset) {
-    struct dirent *dp;
-    char *fullpath;
+    DIR *dir;
+    struct dirent *entry;
 
-    DIR *dir = opendir(path); // Open the directory - dir contains a pointer to manage the dir
-    while (dp = readdir(dir)) // if dp is null, there's no more content to read
-    {
-        fullpath = pathcat(path, dp->d_name);
-        printf("%s\n", fullpath);
-        free(fullpath);
+    if (!(dir = opendir(name)))
+        return;
+
+    while ((entry = readdir(dir)) != NULL) {
+        if (entry->d_type == DT_DIR) {
+            char path[MAX_PATH];
+            if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
+                continue;
+            snprintf(path, sizeof(path), "%s/%s", name, entry->d_name);
+            printf("%*s[%s]\n", indent, "", entry->d_name);
+            listdir(path, indent + 2);
+        } else {
+            printf("%*s- %s\n", indent, "", entry->d_name);
+        }
     }
-    closedir(dir); // close the handle (pointer)
+    closedir(dir);
 }

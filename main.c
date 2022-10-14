@@ -34,8 +34,10 @@ int main(int argc, char *argv[])
         printf(path);
     }
 
-#if defined(linux) || defined(apple)
+    printf("path %s\npattern %s\n", path, pattern);
 
+#if defined(linux) || defined(apple)
+    LinuxRecSearch();
 #elif defined(_WIN32) || defined(_WIN64)
     WindowsRecSearch(path, strlen(path), pattern, strlen(path));
 #endif
