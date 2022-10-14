@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
 {
     clock_t begin = clock();
     char *pattern = argv[1];
-    printf("pattern is %s\n\n", pattern);
     char *path = NULL;
     if (argc > 2)
     {
@@ -25,19 +24,24 @@ int main(int argc, char *argv[])
     }
     else
     {
-        path = (char *)malloc(2 * sizeof(char));
-        path[0] = '.';
+        path = argv[0];
+        int pos = strlen(path);
+        while(path[pos] != '\\' && pos > 0) {
+            --pos;
+        }
+
+        path[pos + 1] = '\0';
+        printf(path);
     }
 
 #if defined(linux) || defined(apple)
 
 #elif defined(_WIN32) || defined(_WIN64)
-    printf("size: %d\n", strlen(path));
     WindowsRecSearch(path, strlen(path), pattern, strlen(path));
 #endif
 
     clock_t end = clock();
     double timeSpent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Working time: %f", timeSpent);
+    printf("\nWorking time: %f\n", timeSpent);
     return 0;
 }

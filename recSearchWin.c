@@ -1,6 +1,6 @@
 
 #include <windows.h>
-#define MAX_PATH 260
+#define MAX_PATH 2600
 
 void WindowsRecSearch(char *path, int pathSize, char *pattern, int offset)
 {
