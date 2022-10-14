@@ -7,12 +7,6 @@
 
 int _CRT_glob = 0;
 
-#if defined(_WIN32) || defined(_WIN64)
-
-#elif defined(linux) || defined(apple)
-
-#endif
-
 
 
 int main(int argc, char *argv[])
@@ -37,11 +31,10 @@ int main(int argc, char *argv[])
     }
 
     printf("path %s\npattern %s\n", path, pattern);
-
-#if defined(linux) || defined(apple)
-    LinuxRecSearch(path, pattern, strlen(path));
-#elif defined(_WIN32) || defined(_WIN64)
+#if defined(_WIN32) || defined(_WIN64)
     WindowsRecSearch(path, strlen(path), pattern, strlen(path));
+#else
+    LinuxRecSearch(path, pattern, strlen(path));
 #endif
 
     clock_t end = clock();

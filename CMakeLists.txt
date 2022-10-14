@@ -9,13 +9,12 @@ if (WIN32 OR WIN64)
         PRIVATE recSearchWin.c
         PUBLIC recSearch.h
     )
-endif()
-
-if (LINUX OR APPLE)
-    target_sources(ff
+else()
+target_sources(ff
         PRIVATE recSearchLinux.c
         PUBLIC recSearch.h
     )
 endif()
+
 
 set_target_properties(ff PROPERTIES OUTPUT_NAME "ff")
