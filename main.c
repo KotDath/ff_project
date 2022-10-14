@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
     printf("path %s\npattern %s\n", path, pattern);
 
 #if defined(linux) || defined(apple)
-    LinuxRecSearch();
+    LinuxRecSearch(path, pattern, strlen(path));
 #elif defined(_WIN32) || defined(_WIN64)
     WindowsRecSearch(path, strlen(path), pattern, strlen(path));
 #endif
