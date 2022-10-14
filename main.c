@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 #if defined(_WIN32) || defined(_WIN64)
     WindowsRecSearch(path, strlen(path), pattern, strlen(path));
 #else
-    LinuxRecSearch(path, 0);
+    LinuxRecSearch(path, pattern);
 #endif
 
     clock_t end = clock();

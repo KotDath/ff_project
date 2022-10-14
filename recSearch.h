@@ -6,6 +6,6 @@
 #include <string.h>
 
 void WindowsRecSearch(char *path, int pathSize, char *pattern, int offset);
-void LinuxRecSearch(char *name, int indent);
+void LinuxRecSearch(char *name, char *pattern);
 
 #endif
