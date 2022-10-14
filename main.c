@@ -3,6 +3,8 @@
 #include <string.h>
 #include <time.h>
 
+#include "recSearch.h"
+
 int _CRT_glob = 0;
 
 #if defined(_WIN32) || defined(_WIN64)
