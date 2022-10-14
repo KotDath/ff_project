@@ -1,2 +1,5 @@
 ff.*
 ff
+build/
+.vscode/
+main.exe
