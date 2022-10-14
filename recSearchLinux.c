@@ -2,11 +2,11 @@
 #include <dirent.h>
 #define MAX_PATH 4096
 
-void LinuxRecSearch(char *path, int indent) {
+void LinuxRecSearch(char *name, int indent) {
     DIR *dir;
     struct dirent *entry;
 
-    if (!(dir = opendir(path)))
+    if (!(dir = opendir(name)))
         return;
 
     while ((entry = readdir(dir)) != NULL) {
